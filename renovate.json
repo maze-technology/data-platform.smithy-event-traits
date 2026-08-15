@@ -1,11 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
-  ],
-  "baseBranches": [
-    "develop"
-  ],
+  "extends": ["config:recommended"],
+  "baseBranchPatterns": ["develop"],
   "automerge": true,
   "automergeType": "pr",
   "gradle": {
@@ -13,20 +9,12 @@
   },
   "packageRules": [
     {
-      "matchManagers": [
-        "github-actions"
-      ],
-      "reviewers": [
-        "engineers/infrastructure-engineers"
-      ]
+      "matchManagers": ["github-actions"],
+      "reviewers": ["engineers/infrastructure-engineers"]
     },
     {
-      "matchManagers": [
-        "gradle"
-      ],
-      "reviewers": [
-        "engineers"
-      ]
+      "matchManagers": ["gradle"],
+      "reviewers": ["engineers"]
     }
   ],
   "dependencyDashboard": true,
