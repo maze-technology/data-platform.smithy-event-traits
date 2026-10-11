@@ -2,77 +2,16 @@ $version: "2"
 
 namespace tech.maze.events
 
-use smithy.api#Document
-use smithy.api#Timestamp
-use smithy.api#jsonName
-
-/// CloudEvents v1.0 envelope (https://cloudevents.io/).
-structure CloudEvent {
-    /// CloudEvents spec version (typically "1.0").
-    @required
-    specversion: String
-
-    /// Unique event identifier.
-    @required
-    id: String
-
-    /// Event source as a URI reference.
-    @required
-    source: String
-
-    /// Event type (schema-defined).
-    @required
-    type: String
-
-    /// Optional subject of the event in the context of the source.
-    subject: String
-
-    /// Time when the event occurred.
-    time: Timestamp
-
-    /// MIME type of the event payload.
-    datacontenttype: String
-
-    /// Schema describing the event payload.
-    dataschema: String
-
-    /// Structured event payload.
-    data: Document
-
-    /// Optional binary payload (base64 encoded).
-    @jsonName("data_base64")
-    dataBase64: Blob
-
-    /// Optional extension attributes.
-    extensions: CloudEventExtensions
-}
-
-map CloudEventExtensions {
-    key: String
-    value: Document
-}
-
-/// Marks a structure as an event payload and provides CloudEvents metadata.
+/// Marks a structure as an event payload.
+/// Runtime envelopes use the Java CloudEvents SDK; this trait drives codegen
+/// (`type` → EventTypes constants) and documents topic/version in specs.
 @trait(selector: "structure")
 structure event {
-    /// CloudEvents `type` attribute for this event.
+    /// Event type string (also used as CloudEvents `type` at runtime).
     @required
     type: String
 
-    /// CloudEvents `source` attribute (URI reference) for this event.
-    /// Typically set by the emitter at runtime.
-    source: String
-
-    /// Optional CloudEvents `subject` attribute.
-    subject: String
-
-    /// Optional CloudEvents `dataschema` attribute.
-    dataschema: String
-
-    /// Optional CloudEvents `datacontenttype` attribute.
-    datacontenttype: String
-
-    /// Optional event semantic version.
+    /// Optional semantic version of this event payload shape.
     version: String
 
     /// Optional transport topic (e.g., Kafka topic).

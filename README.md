@@ -1,6 +1,6 @@
 # smithy-event-traits
 
-Smithy Event traits and CloudEvents envelope definitions.
+Smithy `@event` trait for Kafka/CloudEvents payload modeling (GitLab: `smithy/event-traits`).
 
 ## Quality
 
@@ -17,11 +17,9 @@ Smithy Event traits and CloudEvents envelope definitions.
 
 ## Smithy Models
 
-This library provides:
-
-- `tech.maze.events#CloudEvent` (CloudEvents v1.0 envelope)
-- `tech.maze.events#event` trait for event payload structures
-- `source` is optional in the trait and is typically set by the emitter at runtime.
+This library provides `tech.maze.events#event` for event payload structures.
+The live envelope is the Java CloudEvents SDK (`EventSender` / consumers), not a
+Smithy `CloudEvent` structure.
 
 Example usage:
 
