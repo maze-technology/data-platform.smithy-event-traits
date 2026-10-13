@@ -30,16 +30,15 @@ namespace example.notifications
 
 use tech.maze.events#event
 
-@event(
-  type: "example.notification.created",
-  topic: "notifications.created",
-  version: "1.0.0"
-)
+@event(type: "example.notification.created")
 structure NotificationCreated {
   @required
   id: String
 }
 ```
+
+Transport topics (Kafka, etc.) are wiring concerns — set them via configuration
+or environment variables (e.g. `NOTIFICATIONS_CREATED_TOPIC`), not on `@event`.
 
 ## Development
 
