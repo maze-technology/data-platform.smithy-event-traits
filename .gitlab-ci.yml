@@ -25,6 +25,8 @@ include:
   - project: "data-platform/infrastructure-base"
     ref: "v0.2.26"
     file: "/ci/templates/tag-release.gitlab-ci.yml"
+    inputs:
+      with_v: "false"
   - project: "data-platform/infrastructure-base"
     ref: "v0.2.26"
     file: "/ci/templates/release-approval.gitlab-ci.yml"
